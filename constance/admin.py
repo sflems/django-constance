@@ -156,6 +156,10 @@ class ConstanceForm(forms.Form):
             if current != new:
                 setattr(config, name, new)
 
+            signals.admin_form_save.send(
+                sender=config,
+            )
+
     def clean_version(self):
         value = self.cleaned_data['version']
 
