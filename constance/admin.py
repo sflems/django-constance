@@ -22,7 +22,7 @@ from django.utils.text import normalize_newlines
 from django.utils.translation import gettext_lazy as _
 from django.urls import path
 
-from . import LazyConfig, settings
+from . import LazyConfig, settings, signals
 from .checks import get_inconsistent_fieldnames
 
 
