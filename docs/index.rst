@@ -66,8 +66,9 @@ verification.
     CONSTANCE_IGNORE_ADMIN_VERSION_CHECK = True
 
 
-Signals
--------
+Signals - config_updated
+------------------------
+
 
 Each time a value is changed it will trigger a ``config_updated`` signal.
 
@@ -81,6 +82,23 @@ Each time a value is changed it will trigger a ``config_updated`` signal.
 
 The sender is the ``config`` object, and the ``key`` and ``new_value``
 are the changed settings.
+
+Signals - admin_form_save
+-------------------------
+
+Each time the admin form is saved, it will trigger a single
+``admin_form_save`` signal. 
+
+.. code-block:: python
+
+    from constance.signals import admin_form_save
+
+    @receiver(config_updated)
+    def admin_form_save(sender, **kwargs):
+        print(sender)
+
+The sender is the ``config`` object. Useful for adding functions after individual config_update signals have been sent for each change.
+
 
 Custom fields
 -------------
